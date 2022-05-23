@@ -1,4 +1,5 @@
-from .resource import CPUMonitor, MemoryMonitor, ProcessMonitor
+from .resource import CPUMonitor, MemoryMonitor
+from .executor import ProcessLauncherManager
 
 COUNT = 0
 
@@ -6,6 +7,7 @@ COUNT = 0
 def initialize(server):
     cpu = CPUMonitor(server)
     mem = MemoryMonitor(server)
+    launcher = ProcessLauncherManager(server)
 
     def start(**kwargs):
         global COUNT
