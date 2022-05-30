@@ -1,0 +1,5 @@
+config:
+  refresh: 1
+applications:
+  cone: 
+    module: trame_app.main
