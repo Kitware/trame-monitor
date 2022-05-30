@@ -1,5 +1,9 @@
 config:
   refresh: 1
 applications:
+  monitor: 
+    module: trame_monitor.app.main
   cone: 
-    module: trame_app.main
+    module: trame_monitor.examples.cone
+  sphere: 
+    module: trame_monitor.examples.sphere

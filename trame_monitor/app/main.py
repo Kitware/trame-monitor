@@ -8,14 +8,26 @@ def _reload():
     ui.initialize(server)
 
 
-def main(**kwargs):
-    server = get_server()
+def main(server=None, **kwargs):
+    # Get or create server
+    if server is None:
+        server = get_server()
+
+    if isinstance(server, str):
+        server = get_server(server)
+
+    # CLI
+    server.cli.add_argument(
+        "--apps",
+        help="Path to apps config file",
+    )
 
     # Make UI auto reload
     server.controller.on_server_reload.add(_reload)
 
     # Init application
-    engine.initialize(server)
+    args = server.cli.parse_known_args()[0]
+    engine.initialize(server, apps=args.apps)
     ui.initialize(server)
 
     # Start server

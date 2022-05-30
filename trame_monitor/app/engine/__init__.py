@@ -4,10 +4,10 @@ from .executor import ProcessLauncherManager
 COUNT = 0
 
 
-def initialize(server):
+def initialize(server, apps=None, **kwargs):
     cpu = CPUMonitor(server)
     mem = MemoryMonitor(server)
-    launcher = ProcessLauncherManager(server)
+    launcher = ProcessLauncherManager(server, config=apps)
 
     def start(**kwargs):
         global COUNT

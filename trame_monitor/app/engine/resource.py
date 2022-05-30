@@ -170,5 +170,5 @@ class ProcessMonitor(AbstractMonitor):
                 )
 
         with self._state:
-            print(processes)
+            # print(processes)
             self._state.tmr_processes = processes
